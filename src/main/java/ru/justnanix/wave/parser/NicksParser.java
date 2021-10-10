@@ -16,10 +16,10 @@ public class NicksParser {
         if (Options.randomNicks)
             return;
 
-        System.out.println(" * (NicksParser) -> Парсю ники...");
+        System.out.println(" * (NicksParser) -> Парсинг ников...");
 
         try {
-            File file = new File("Nicks\\nicks.txt");
+            File file = new File("nicks.txt");
 
             if (file.exists()) {
                 try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -32,10 +32,9 @@ public class NicksParser {
             } else {
                 System.out.println(" * (NicksParser) -> Не найден nicks.txt, создаю новый...\n");
 
-                for (int i = 0; i < 100000; i++)
+                for (int i = 0; i < 5000; i++)
                     nicks.add("Wave_" + Wave.getInstance().getRandom().nextInt(1000000));
 
-                new File("Nicks").mkdirs();
                 file.createNewFile();
 
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {

@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group='ru.justnanix.wave'
+archivesBaseName="Wave"
+version='1.0'
+	
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+	mavenCentral()
+	jcenter()
+	maven { url 'https://jitpack.io' }
+}
+
+configurations {
+	bundle
+	compile.extendsFrom bundle
+}
+
+dependencies {
+	bundle "com.github.Steveice10:MCProtocolLib:1.12.2-2"
+	bundle "org.apache.commons:commons-lang3:3.12.0"
+	bundle "org.yaml:snakeyaml:1.26"
+	bundle "org.jsoup:jsoup:1.14.2"
+}
+
+jar {
+	from { configurations.bundle.collect { it.isDirectory() ? it : zipTree(it) } }
+	manifest {
+		attributes 'Main-Class': 'ru.justnanix.wave.Main'
+	}
+}

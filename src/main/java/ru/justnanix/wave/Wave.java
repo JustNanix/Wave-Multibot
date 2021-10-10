@@ -17,7 +17,6 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Wave {
     private static Wave instance;
@@ -31,14 +30,6 @@ public class Wave {
     {
         System.out.println(" -> [ Wave v1.4 by JustNanix ] <- \n");
         System.setProperty("socksProxyVersion", "4");
-
-        if (System.console() == null) {
-            try {
-                new ProcessBuilder("cmd", "/c", "msg", System.getenv("username"), "миша нахуй ты меня запустил не через батнек... мишааа чо ты такой тупой та").start();
-            } catch (Exception ignored) {}
-
-            System.exit(0);
-        }
 
         try {
             new ProcessBuilder("cmd", "/c", "title Wave v1.4").inheritIO().start().waitFor();
@@ -75,12 +66,8 @@ public class Wave {
 
             instance = this;
         } catch (Exception e) {
-            System.out.println(" * (System) Возникла ошибка при загрузке config.yml!");
-
+            System.out.println(" * (System) При загрузке конфига возникла ошибка: "+e+"!");
             ThreadUtils.sleep(2000L);
-            e.printStackTrace();
-
-            ThreadUtils.sleep(10000L);
             System.exit(0);
         }
 
@@ -100,7 +87,7 @@ public class Wave {
                     ThreadUtils.sleep(TimeUnit.MINUTES.toMillis(Options.autoRestartDelay));
 
                     String path = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-                    String decodedPath = URLDecoder.decode(path, StandardCharsets.UTF_8).substring(1).replace("/", "\\");
+                    String decodedPath = URLDecoder.decode(path, StandardCharsets.UTF_8.toString()).substring(1).replace("/", "\\");
 
                     new ProcessBuilder("cmd", "/c", "start", "java", "-Xmx2G", "-server", "-jar", "\"" + decodedPath + "\"").start();
 

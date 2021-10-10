@@ -21,10 +21,10 @@ public class ProxyParser {
     private int number = -1;
 
     public void init() {
-        System.out.println("\n * (ProxyParser) -> Парсю прокси...");
+        System.out.println("\n * (ProxyParser) -> Парсинг прокси...");
 
         try {
-            File proxyFile = new File("Proxy\\socks4.txt");
+            File proxyFile = new File("proxy.txt");
             if (proxyFile.exists()) {
                 try (BufferedReader reader = new BufferedReader(new FileReader(proxyFile))) {
                     while (reader.ready()) {
@@ -76,7 +76,6 @@ public class ProxyParser {
 
             System.out.printf(" * (ProxyParser) -> Загружено %s прокси.\n", proxies.size());
 
-            new File("Proxy").mkdirs();
             proxyFile.createNewFile();
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(proxyFile))) {

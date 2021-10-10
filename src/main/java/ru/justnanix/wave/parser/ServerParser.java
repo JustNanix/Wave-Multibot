@@ -25,7 +25,7 @@ public class ServerParser {
         if (Options.testMode)
             return;
 
-        System.out.println("\n * (ServerParser) -> Парсю сервера...\n");
+        System.out.println("\n * (ServerParser) -> Парсинг сервера...\n");
 
         parseServers(true);
         servers.removeIf(str -> !str.matches("\\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):\\d{1,5}\\b"));
@@ -47,7 +47,7 @@ public class ServerParser {
 
         try {
             if (print)
-                System.out.println(" * (ServerParser) -> Парсю monitoringminecraft");
+                System.out.println(" * (ServerParser) -> Парсинг monitoringminecraft");
 
             List<String> temp = new CopyOnWriteArrayList<>();
 
@@ -68,7 +68,7 @@ public class ServerParser {
 
         try {
             if (print)
-                System.out.println(" * (ServerParser) -> Парсю minecraftrating");
+                System.out.println(" * (ServerParser) -> Парсинг minecraftrating");
 
             List<String> temp = new CopyOnWriteArrayList<>();
 
@@ -86,7 +86,7 @@ public class ServerParser {
 
         try {
             if (print)
-                System.out.println(" * (ServerParser) -> Парсю misterlauncher");
+                System.out.println(" * (ServerParser) -> Парсинг misterlauncher");
 
             List<String> temp = new CopyOnWriteArrayList<>();
 
@@ -104,7 +104,7 @@ public class ServerParser {
 
         try {
             if (print)
-                System.out.println(" * (ServerParser) -> Парсю tmonitoring");
+                System.out.println(" * (ServerParser) -> Парсинг tmonitoring");
 
             List<String> temp = new CopyOnWriteArrayList<>();
 
@@ -122,7 +122,7 @@ public class ServerParser {
 
         try {
             if (print)
-                System.out.println(" * (ServerParser) -> Парсю minecraftstatistics");
+                System.out.println(" * (ServerParser) -> Парсинг minecraftstatistics");
 
             List<String> temp = new CopyOnWriteArrayList<>();
 
