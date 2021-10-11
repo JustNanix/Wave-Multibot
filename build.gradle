@@ -5,8 +5,8 @@ group='ru.justnanix.wave'
 archivesBaseName="Wave"
 version='1.0'
 	
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 compileJava.options.encoding = 'UTF-8'
 

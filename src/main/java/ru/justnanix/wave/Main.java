@@ -17,7 +17,13 @@ public class Main {
 
         if (System.console() == null) {
             try {
-                Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "java -Xmx2G -server -jar "+Main.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6)});
+				File java = new File(".jdk/bin/java.exe");
+                String jar = Main.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
+				if (java.exists()) {
+					Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "\".jdk/bin/java.exe\" -Xmx2G -server -jar "+jar});
+				} else {
+					Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "java -Xmx2G -server -jar "+jar});
+				}
             } catch (Exception ignored) {}
         } else {
             new Wave().launch();

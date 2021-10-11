@@ -87,7 +87,7 @@ public class Wave {
                     ThreadUtils.sleep(TimeUnit.MINUTES.toMillis(Options.autoRestartDelay));
 
                     String path = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-                    String decodedPath = URLDecoder.decode(path, StandardCharsets.UTF_8.toString()).substring(1).replace("/", "\\");
+                    String decodedPath = URLDecoder.decode(path, StandardCharsets.UTF_8).substring(1).replace("/", "\\");
 
                     new ProcessBuilder("cmd", "/c", "start", "java", "-Xmx2G", "-server", "-jar", "\"" + decodedPath + "\"").start();
 
