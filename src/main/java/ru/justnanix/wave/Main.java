@@ -18,7 +18,7 @@ public class Main {
         if (System.console() == null) {
             try {
 				File java = new File(".jdk/bin/java.exe");
-                String jar = Main.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
+                String jar = Main.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(1).replace("/", "\\");
 				if (java.exists()) {
 					Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "\".jdk/bin/java.exe\" -Xmx2G -server -jar "+jar});
 				} else {

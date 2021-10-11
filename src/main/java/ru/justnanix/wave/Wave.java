@@ -11,6 +11,7 @@ import ru.justnanix.wave.utils.Statistics;
 import ru.justnanix.wave.utils.StringGenerator;
 import ru.justnanix.wave.utils.ThreadUtils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.net.Proxy;
 import java.net.URLDecoder;
@@ -89,7 +90,12 @@ public class Wave {
                     String path = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
                     String decodedPath = URLDecoder.decode(path, StandardCharsets.UTF_8).substring(1).replace("/", "\\");
 
-                    new ProcessBuilder("cmd", "/c", "start", "java", "-Xmx2G", "-server", "-jar", "\"" + decodedPath + "\"").start();
+                    File java = new File(".jdk/bin/java.exe");
+                    if (java.exists()) {
+                        Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "\".jdk/bin/java.exe\" -Xmx2G -server -jar "+decodedPath});
+                    } else {
+                        Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "java -Xmx2G -server -jar "+decodedPath});
+                    }
 
                     System.exit(0);
                 } catch (Exception ignored) {}
